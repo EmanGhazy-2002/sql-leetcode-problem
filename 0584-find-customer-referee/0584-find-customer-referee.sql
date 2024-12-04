@@ -4,4 +4,4 @@ SELECT
 FROM
     Customer
 WHERE
-    COALESCE(referee_id,'')!=2 ;
+    COALESCE(referee_id,-1)!=2 ;
