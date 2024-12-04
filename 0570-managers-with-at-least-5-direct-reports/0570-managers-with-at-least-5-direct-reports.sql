@@ -3,11 +3,11 @@ SELECT
    e1.name
 FROM 
    Employee e1
-JOIN
+inner JOIN
    Employee e2
 ON 
    e2.managerId=e1.id
 GROUP BY
     e2.managerId
 HAVING 
-   count(*) >=5
+   count(e2.managerId) >=5
