@@ -6,4 +6,4 @@ FROM
 left join 
     EmployeeUNI AS emu
 ON
-    em.id=emu.id
+    emu.id=em.id
