@@ -1,5 +1,5 @@
 # Write your MySQL query statement below
-SELECT x,y,z,
+SELECT *,
 CASE
 WHEN x + y > z
 and x + z > y
