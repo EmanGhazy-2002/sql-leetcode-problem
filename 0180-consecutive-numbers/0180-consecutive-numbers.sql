@@ -1,10 +1,6 @@
 # Write your MySQL query statement below
-SELECT num AS ConsecutiveNums
-FROM (
-SELECT num,
-lag(num) over(ORDER BY id)  AS prefix_num,
-lead(num) over(ORDER BY id) AS postfix_num
-FROM logs
-)AS log
-WHERE (log.num= prefix_num) AND (log.num=postfix_num)
-GROUP BY num
+SELECT l1.num AS ConsecutiveNums
+FROM logs l1
+JOIN logs l2 ON l1.num = l2.num AND l1.id = l2.id - 1
+JOIN logs l3 ON l1.num = l3.num AND l1.id = l3.id - 2
+GROUP BY l1.num;
