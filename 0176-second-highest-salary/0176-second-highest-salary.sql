@@ -1,4 +1,4 @@
 # Write your MySQL query statement below
-SELECT MAX(salary) AS SecondHighestSalary
-FROM employee
-WHERE salary < (SELECT MAX(salary) FROM employee);
+SELECT COALESCE((SELECT DISTINCT salary 
+from employee
+order by salary desc limit 1 ,1), null) as SecondHighestSalary
