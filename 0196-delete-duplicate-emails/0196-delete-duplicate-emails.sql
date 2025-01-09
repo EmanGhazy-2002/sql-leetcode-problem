@@ -1,4 +1,12 @@
 # Write your MySQL query statement below
-DELETE a1 
-FROM Person a1,Person a2 
-WHERE a1.email=a2.email AND a1.id>a2.id;
+# Write your MySQL query statement below
+DELETE FROM Person 
+WHERE id IN (
+    SELECT a.id
+    FROM (
+        SELECT id, email,
+               ROW_NUMBER() OVER (PARTITION BY email ORDER BY id) AS rn
+        FROM Person
+    ) a
+    WHERE a.rn > 1
+);
